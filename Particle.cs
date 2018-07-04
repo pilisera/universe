@@ -5,7 +5,13 @@ namespace Universe
 {
   abstract class Particle
   {
-    public abstract double DecayChance { get; }
+    public virtual double DecayChance
+    {
+      get
+      {
+        return 0;
+      }
+    }
 
     public IEnumerable<Particle> Step(Random random)
     {
@@ -20,7 +26,10 @@ namespace Universe
       }
     }
 
-    protected abstract IEnumerable<Particle> Decay(Random random);
+    protected virtual IEnumerable<Particle> Decay(Random random)
+    {
+      throw new NotImplementedException();
+    }
 
     public override int GetHashCode()
     {
